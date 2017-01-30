@@ -25,6 +25,10 @@ requirements:
   run:
     - python
 
+test:
+  imports:
+    - pywintypes    
+
 about:
   home: https://sourceforge.net/projects/pywin32
   license: PSF
