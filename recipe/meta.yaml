@@ -13,10 +13,13 @@ source:
   {{ hash_type }}: {{ hash }}
 
 build:
-  number: 0
+  number: 1
   script: 
     - python setup.py install --record=record.txt  # [not py3k]
     - python setup3.py install --record=record.txt  # [py3k]
+    - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %PREFIX%
+    - dir pywintypes%CONDA_PY%.dll
+
   skip: True  # [not win]
 
 requirements:
