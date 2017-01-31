@@ -18,8 +18,6 @@ build:
     - python setup.py install --record=record.txt  # [not py3k]
     - python setup3.py install --record=record.txt  # [py3k]
     - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %PREFIX%
-    - dir %PREFIX%\pythoncom%CONDA_PY%.dll
-    - dir %PREFIX%\pywintypes%CONDA_PY%.dll
 
   skip: True  # [not win]
 
@@ -28,6 +26,11 @@ requirements:
     - python 
   run:
     - python
+
+test:
+  commands:
+    - dir %PREFIX%\pythoncom%CONDA_PY%.dll
+    - dir %PREFIX%\pywintypes%CONDA_PY%.dll
 
 about:
   home: https://sourceforge.net/projects/pywin32
