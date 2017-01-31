@@ -6,7 +6,7 @@ if we can figure out why the package seems broken but the tests for the package 
 Copied this function and added some print statements to see where it is finding "pywintypesXX.dll" on AppVeyor.
 
 """
-from __future__ import print_function
+
 
 
 # Magic utility that "redirects" to pywintypesxx.dll
