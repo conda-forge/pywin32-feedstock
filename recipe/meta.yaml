@@ -29,8 +29,8 @@ requirements:
 
 test:
   commands:
-    - dir %PREFIX%\pythoncom%CONDA_PY%.dll
-    - dir %PREFIX%\pywintypes%CONDA_PY%.dll
+    - if not exist %PREFIX%\pythoncom%CONDA_PY%.dll exit 1
+    - if not exist %PREFIX%\pywintypes%CONDA_PY%.dll exit 1
 
 about:
   home: https://sourceforge.net/projects/pywin32
