@@ -17,7 +17,7 @@ build:
   script: 
     - python setup.py install --record=record.txt  # [not py3k]
     - python setup3.py install --record=record.txt  # [py3k]
-    - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %PREFIX%
+    - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%
 
   skip: True  # [not win]
 
@@ -29,8 +29,8 @@ requirements:
 
 test:
   commands:
-    - if not exist %PREFIX%\pythoncom%CONDA_PY%.dll exit 1
-    - if not exist %PREFIX%\pywintypes%CONDA_PY%.dll exit 1
+    - if not exist %LIBRARY_BIN%\pythoncom%CONDA_PY%.dll exit 1
+    - if not exist %LIBRARY_BIN%\pywintypes%CONDA_PY%.dll exit 1
 
 about:
   home: https://sourceforge.net/projects/pywin32
