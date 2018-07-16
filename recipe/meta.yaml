@@ -23,6 +23,8 @@ build:
 
 requirements:
   build:
+    - {{ compiler("cxx") }}
+  host:
     - python
   run:
     - python
