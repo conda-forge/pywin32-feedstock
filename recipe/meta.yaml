@@ -6,7 +6,6 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.zip
   url: https://github.com/mhammond/{{ name }}/archive/b{{ version }}.tar.gz
   sha256: c8be831cb0fc11badf27b6edc0da08984322452e5c98ac84aa158cc89f6d0837
 
