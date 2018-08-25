@@ -1,6 +1,5 @@
 {% set name = "pywin32" %}
 {% set version = "221" %}
-{% set hash_type = "sha256" %}
 {% set hash = "5faa048471cdd4eefcde9dbada0782fd95868d7cce2704ee06b75ca40849e08f" %}
 
 package:
@@ -10,7 +9,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.zip
   url: https://github.com/mhammond/{{ name }}/archive/b{{ version }}.tar.gz
-  {{ hash_type }}: {{ hash }}
+  sha256: {{ hash }}
 
 build:
   number: 0
