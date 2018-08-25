@@ -9,7 +9,7 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.zip
-  url: https://downloads.sourceforge.net/project/{{ name }}/{{ name }}/Build {{ version }}/{{ name }}-{{ version }}.zip
+  url: https://github.com/mhammond/{{ name }}/archive/b{{ version }}.tar.gz
   {{ hash_type }}: {{ hash }}
 
 build:
@@ -33,7 +33,7 @@ test:
     - if not exist %LIBRARY_BIN%\pywintypes%CONDA_PY%.dll exit 1
 
 about:
-  home: https://sourceforge.net/projects/pywin32
+  home: https://github.com/mhammond/pywin32
   license: PSF
   summary: Python extensions for Windows
 
