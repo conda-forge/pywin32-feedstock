@@ -26,11 +26,6 @@ requirements:
   run:
     - python
 
-test:
-  commands:
-    - if not exist %LIBRARY_BIN%\pythoncom%CONDA_PY%.dll exit 1
-    - if not exist %LIBRARY_BIN%\pywintypes%CONDA_PY%.dll exit 1
-
 about:
   home: https://github.com/mhammond/pywin32
   license: PSF
