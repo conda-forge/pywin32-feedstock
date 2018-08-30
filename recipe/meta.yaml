@@ -16,7 +16,7 @@ build:
     - "{{ PYTHON }} setup3.py install --record=record.txt"  # [py3k]
     - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%
 
-  skip: True  # [not win and py27]
+  skip: True  # [not win or py27]
 
 requirements:
   build:
