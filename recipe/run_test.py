@@ -5,7 +5,7 @@ Skipped modules:
 
 _winxptheme: private module
 wincerapi: interface to the win32 CE Remote API
-"""    
+"""
 import mmapfile
 import odbc
 import perfmon
@@ -38,3 +38,13 @@ import win32service
 import win32transaction
 import win32ts
 import win32wnet
+
+import os
+
+conda_py = str(os.sys.version_info.major) + str(os.sys.version_info.minor)
+
+pythoncom_filename = os.environ["LIBRARY_BIN"] + "\pythoncom" + conda_py + ".dll"
+pywintypes_filename = os.environ["LIBRARY_BIN"] + "\pywintypes" + conda_py + ".dll"
+
+assert os.path.isfile(pythoncom_filename)
+assert os.path.isfile(pywintypes_filename)
