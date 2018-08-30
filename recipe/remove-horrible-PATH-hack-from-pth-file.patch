@@ -1,0 +1,16 @@
+diff -urN work.old/pywin32.pth work/pywin32.pth
+--- work.old/pywin32.pth	2018-05-08 22:48:44.000000000 +0100
++++ work/pywin32.pth	2018-05-08 22:50:22.000000000 +0100
+@@ -2,8 +2,11 @@
+ win32
+ win32\lib
+ Pythonwin
++# This breaks any software involving a feedback loop involving PATH and Python
++# One example of such software is the Anaconda Distribition's conda package
++# manager, so we do not do it. We fixed this in a slightly better way anyway.
+ # Entries needed for a "portable" installations, where the post_install script
+ # isn't run, which would normally copy the pywin32 core DLL files to either
+ # the top of the python directory.
+ # We just stick the source of these DLLs directly on the PATH.
+-import os;os.environ["PATH"]+=(';'+os.path.join(sitedir,"pywin32_system32"))
++# import os;os.environ["PATH"]+=(';'+os.path.join(sitedir,"pywin32_system32"))
