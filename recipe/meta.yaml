@@ -15,7 +15,7 @@ source:
   # disabled - 222 appears to use .i files (swig?) and not cpp files directly anymore.
   # - 0004-fix-mapi-compile-errors.patch
   # - 0005-remove-JOB_OBJECT_RESERVED_LIMIT_VALID_FLAGS.patch
-  - ignore_exchange_plugin.patch   # [win64]
+  - ignore_exchange_plugin.patch   # [win]
   # running the post-install script fails, because we're not installing to the root system.
   #    Just skip it - it's stuff like registering COM stuff that we don't handle anyway.
   - nuke_post_install.patch
@@ -24,10 +24,6 @@ source:
 build:
   number: 1
   script:
-    - "{{ PYTHON }} setup.py install --record=record.txt"  # [not py3k]
-    - "{{ PYTHON }} setup3.py install --record=record.txt"  # [py3k]
-    - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%
-
   skip: True  # [not win]
 
 requirements:
