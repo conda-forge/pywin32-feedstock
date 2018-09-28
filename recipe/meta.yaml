@@ -1,21 +1,18 @@
-{% set name = "pywin32" %}
 {% set version = "226" %}
 
 package:
-  name: {{ name }}
+  name: pywin32
   version: {{ version }}
 
 source:
-  url: https://github.com/mhammond/{{ name }}/archive/b{{ version }}.tar.gz
+  url: https://github.com/mhammond/pywin32/archive/b{{ version }}.tar.gz
   sha256: 172c5618d22cf8e9bca7bc01699c4bd94d4b03c926a6da125d5fe9b8eaa2837b
 
 build:
   number: 1000
   script:
-    - "{{ PYTHON }} setup.py install --record=record.txt"  # [not py3k]
-    - "{{ PYTHON }} setup3.py install --record=record.txt"  # [py3k]
+    - "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
     - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%
-
   skip: True  # [not win or py27]
 
 requirements:
@@ -23,7 +20,7 @@ requirements:
     - {{ compiler("c") }}
   host:
     - python
-    - setuptools
+    - pip
   run:
     - python
 
