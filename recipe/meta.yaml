@@ -1,4 +1,4 @@
-{% set version = "226" %}
+{% set version = "224" %}
 
 package:
   name: pywin32
