@@ -10,7 +10,7 @@ source:
   sha256: 172c5618d22cf8e9bca7bc01699c4bd94d4b03c926a6da125d5fe9b8eaa2837b
 
 build:
-  number: 0
+  number: 1000
   script:
     - "{{ PYTHON }} setup.py install --record=record.txt"  # [not py3k]
     - "{{ PYTHON }} setup3.py install --record=record.txt"  # [py3k]
