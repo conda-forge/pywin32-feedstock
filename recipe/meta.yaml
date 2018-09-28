@@ -1,5 +1,5 @@
 {% set name = "pywin32" %}
-{% set version = "223" %}
+{% set version = "226" %}
 
 package:
   name: {{ name }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/mhammond/{{ name }}/archive/b{{ version }}.tar.gz
-  sha256: c8be831cb0fc11badf27b6edc0da08984322452e5c98ac84aa158cc89f6d0837
+  sha256: 172c5618d22cf8e9bca7bc01699c4bd94d4b03c926a6da125d5fe9b8eaa2837b
 
 build:
-  number: 1000
+  number: 0
   script:
     - "{{ PYTHON }} setup.py install --record=record.txt"  # [not py3k]
     - "{{ PYTHON }} setup3.py install --record=record.txt"  # [py3k]
