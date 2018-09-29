@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/mhammond/pywin32/archive/b{{ version }}.tar.gz
-  sha256: 172c5618d22cf8e9bca7bc01699c4bd94d4b03c926a6da125d5fe9b8eaa2837b
+  sha256: f7eadeba556f9da29900b86e4f2f79680a90c11128f568c5391e3b90b9c53740
 
 build:
   number: 1000
