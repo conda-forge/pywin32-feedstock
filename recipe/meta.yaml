@@ -11,7 +11,7 @@ source:
 build:
   number: 1000
   script:
-    - "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+    - "{{ PYTHON }} setup.py -q install --record=record.txt"
     - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%
   skip: True  # [not win or py27]
 
@@ -21,7 +21,6 @@ requirements:
   host:
     - python
     - pip
-    - setuptools
   run:
     - python
 
