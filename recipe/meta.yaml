@@ -11,8 +11,7 @@ source:
 build:
   number: 1000
   script:
-    # --no-cache-dir fails the build with: error: option --single-version-externally-managed not recognized
-    - "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vvv"
+    - "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
     - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%
   skip: True  # [not win or py27]
 
@@ -22,6 +21,7 @@ requirements:
   host:
     - python
     - pip
+    - setuptools
   run:
     - python
 
