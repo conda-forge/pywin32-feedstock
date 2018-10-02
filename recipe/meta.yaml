@@ -7,6 +7,8 @@ package:
 source:
   url: https://github.com/mhammond/pywin32/archive/b{{ version }}.tar.gz
   sha256: f7eadeba556f9da29900b86e4f2f79680a90c11128f568c5391e3b90b9c53740
+  patches:
+    - disable_exchange_modules.patch
 
 build:
   number: 1000
