@@ -1,4 +1,4 @@
-{% set version = "224" %}
+{% set version = "225" %}
 
 package:
   name: pywin32
@@ -6,12 +6,12 @@ package:
 
 source:
   url: https://github.com/mhammond/pywin32/archive/b{{ version }}.tar.gz
-  sha256: f7eadeba556f9da29900b86e4f2f79680a90c11128f568c5391e3b90b9c53740
+  sha256: ec164d85a563189725ecaadba735f6fc207e4b47213d20923c149f001a6bc102
   patches:
     - disable_exchange_modules.patch
 
 build:
-  number: 1000
+  number: 0
   script:
     - "{{ PYTHON }} setup.py -q install --record=record.txt"
     - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%
