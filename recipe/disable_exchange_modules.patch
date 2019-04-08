@@ -14,4 +14,4 @@ index 7c35d909..8e9ce53a 100644
 +            return ext.name + " module is disabled"
          if get_build_version() >=14:
              if ext.name == 'exchange':
-                 ext.libraries.append('legacy_stdio_definitions') 
+                 ext.libraries.append('legacy_stdio_definitions')
