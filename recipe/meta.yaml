@@ -14,7 +14,7 @@ build:
     - pushd "{{ RECIPE_DIR }}"
     - cp disable_exchange_modules.patch "{{ SRC_DIR }}"
     - popd
-    - patch --binary -p0 -i disable_exchange_modules.patch
+    - patch --binary -p1 -i disable_exchange_modules.patch
     - "{{ PYTHON }} setup.py -q install --record=record.txt"
     - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%
   skip: True  # [not win or py27]
