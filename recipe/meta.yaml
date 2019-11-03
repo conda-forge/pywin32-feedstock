@@ -1,4 +1,4 @@
-{% set version = "224" %}
+{% set version = "225" %}
 
 package:
   name: pywin32
@@ -6,12 +6,12 @@ package:
 
 source:
   url: https://github.com/mhammond/pywin32/archive/b{{ version }}.tar.gz
-  sha256: f7eadeba556f9da29900b86e4f2f79680a90c11128f568c5391e3b90b9c53740
+  sha256: b8bd621f91dfec2e836695aa333231dcf97d826ffd06e9bc0bf3a0c6265a7f6f
   patches:
     - disable_exchange_modules.patch
 
 build:
-  number: 1000
+  number: 0
   script:
     - "{{ PYTHON }} setup.py -q install --record=record.txt"
     - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%
@@ -29,6 +29,7 @@ requirements:
 about:
   home: https://github.com/mhammond/pywin32
   license: PSF
+  license_file: Pythonwin/License.txt
   summary: Python extensions for Windows
 
 extra:
