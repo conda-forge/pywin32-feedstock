@@ -1,4 +1,4 @@
-{% set version = "224" %}
+{% set version = "225" %}
 
 package:
   name: pywin32
@@ -11,7 +11,7 @@ source:
     - disable_exchange_modules.patch
 
 build:
-  number: 1000
+  number: 0
   script:
     - "{{ PYTHON }} setup.py -q install --record=record.txt"
     - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%
@@ -29,6 +29,7 @@ requirements:
 about:
   home: https://github.com/mhammond/pywin32
   license: PSF
+  license_file: Pythonwin/License.txt
   summary: Python extensions for Windows
 
 extra:
