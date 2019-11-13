@@ -1,4 +1,4 @@
-{% set version = "225" %}
+{% set version = "223" %}
 
 package:
   name: pywin32
@@ -6,15 +6,15 @@ package:
 
 source:
   url: https://github.com/mhammond/pywin32/archive/b{{ version }}.tar.gz
-  sha256: b8bd621f91dfec2e836695aa333231dcf97d826ffd06e9bc0bf3a0c6265a7f6f
-  patches:
-    - disable_exchange_modules.patch
+  sha256: c8be831cb0fc11badf27b6edc0da08984322452e5c98ac84aa158cc89f6d0837
 
 build:
-  number: 0
+  number: 1001
   script:
-    - "{{ PYTHON }} setup.py -q install --record=record.txt"
+    - "{{ PYTHON }} setup.py install --record=record.txt"  # [not py3k]
+    - "{{ PYTHON }} setup3.py install --record=record.txt"  # [py3k]
     - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%
+
   skip: True  # [not win or py27]
 
 requirements:
@@ -22,7 +22,7 @@ requirements:
     - {{ compiler("c") }}
   host:
     - python
-    - pip
+    - setuptools
   run:
     - python
 
@@ -30,7 +30,7 @@ about:
   home: https://github.com/mhammond/pywin32
   license: PSF
   license_file: Pythonwin/License.txt
-  summary: Python extensions for Windows
+  summary: "Python extensions for Windows"
 
 extra:
   recipe-maintainers:
