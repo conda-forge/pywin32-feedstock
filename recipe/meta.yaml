@@ -1,30 +1,34 @@
+{% set name = "pywin32" %}
 {% set version = "227" %}
+{% set hash_type = "sha256" %}
+{% set hash = "f82946fb29d55a27b3abcd0b527ef2e8da6ea05b01dfcc40bfc14847b7673e8e" %}
 
 package:
-  name: pywin32
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://github.com/mhammond/pywin32/archive/b{{ version }}.tar.gz
-  sha256: 02b0de1abe9c52762ba3024a0e801df5b41f53eeea48b6561d4a9038ee36c010
+  fn: {{ name }}-{{ version }}.zip
+  url: https://github.com/mhammond/pywin32/archive/b{{ version }}.zip
+  {{ hash_type }}: {{ hash }}
   patches:
-    - disable_exchange_modules.patch
+    - 0001-scintilla-makefiles.patch
+    # running the post-install script fails, because we're not installing to the root system.
+    #    Just skip it - it's stuff like registering COM stuff that we don't handle anyway.
+    - 0002-nuke-post-install.patch
     - 0003-remove-PATH-pth-hack.patch
+    - 0004-remove-JOB_OBJECT_RESERVED_LIMIT_VALID_FLAGS.patch
 
 build:
   number: 0
-  script:
-    - "{{ PYTHON }} setup.py -q install --record=record.txt"
-    - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %PREFIX%\Lib\site-packages\win32\
-    - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%\
-  skip: True  # [not win or py27]
+  skip: True  # [not win]
 
 requirements:
   build:
-    - {{ compiler("c") }}
+    - {{ compiler('c') }}
   host:
     - python
-    - pip
+    - setuptools
   run:
     - python
 
@@ -36,6 +40,8 @@ about:
   description: |
     A set of extension modules that provides access to many of the Windows API functions.
   dev_url: https://github.com/mhammond/pywin32
+  doc_url: https://pypi.python.org/pypi/pywin32
+  doc_source_url: https://sourceforge.net/projects/pywin32/
 
 extra:
   recipe-maintainers:
