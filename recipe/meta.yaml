@@ -21,7 +21,7 @@ source:
 
 build:
   number: 1
-  skip: True  # [not win]
+  skip: True  # [not win or py27]
 
 requirements:
   build:
