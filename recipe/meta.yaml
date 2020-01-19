@@ -20,12 +20,15 @@ source:
     - 0004-remove-JOB_OBJECT_RESERVED_LIMIT_VALID_FLAGS.patch
 
 build:
-  number: 0
+  number: 1
   skip: True  # [not win]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - m2-patch  # [win]
+    - m2-gcc-libs  # [win]
+    - patch  # [not win]
   host:
     - python
     - setuptools
