@@ -29,6 +29,8 @@ requirements:
     - m2-patch  # [win]
     - m2-gcc-libs  # [win]
     - patch  # [not win]
+    # Used to extract MAPI headers at build-time.
+    - libarchive  # [win]
   host:
     - python
     - setuptools
