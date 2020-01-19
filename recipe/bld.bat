@@ -2,13 +2,7 @@ setlocal enabledelayedexpansion
 REM NOTE: this calls python files directly during the build process, relying on your file associations.
 REM    when building this recipe, you need to associate python files with C:\aroot\stage\pythonw.exe for best results.
 
-:: UCRT builds requires using Windows 8.1 SDK and that
-:: does not provide the MAPI headers.
-if %PY3K%==1 (
-    set UCRT_BUILD=1
-) else (
-    set UCRT_BUILD=0
-)
+set UCRT_BUILD=1
 
 if %UCRT_BUILD%==1 (
     powershell.exe -ExecutionPolicy Unrestricted -Command "& {Invoke-WebRequest -Uri https://download.microsoft.com/download/B/6/4/B645F2C9-715A-4EAB-B561-CC0C9779C249/Outlook2010MAPIHeaders.EXE -OutFile Outlook2010MAPIHeaders.EXE}"
