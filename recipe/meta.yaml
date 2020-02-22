@@ -14,7 +14,8 @@ build:
   number: 0
   script:
     - "{{ PYTHON }} setup.py -q install --record=record.txt"
-    - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%
+    - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %PREFIX%\Lib\site-packages\win32\
+    - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%\
   skip: True  # [not win or py27]
 
 requirements:
@@ -31,8 +32,12 @@ about:
   license: PSF
   license_file: Pythonwin/License.txt
   summary: Python extensions for Windows
+  description: |
+    A set of extension modules that provides access to many of the Windows API functions.
+  dev_url: https://github.com/mhammond/pywin32
 
 extra:
   recipe-maintainers:
+    - mingwandroid
     - nicoddemus
     - carlodri
