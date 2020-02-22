@@ -9,6 +9,7 @@ source:
   sha256: 02b0de1abe9c52762ba3024a0e801df5b41f53eeea48b6561d4a9038ee36c010
   patches:
     - disable_exchange_modules.patch
+    - 0003-remove-PATH-pth-hack.patch
 
 build:
   number: 0
