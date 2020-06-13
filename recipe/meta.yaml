@@ -1,4 +1,4 @@
-{% set version = "227" %}
+{% set version = "228" %}
 
 package:
   name: pywin32
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/mhammond/pywin32/archive/b{{ version }}.tar.gz
-  sha256: 02b0de1abe9c52762ba3024a0e801df5b41f53eeea48b6561d4a9038ee36c010
+  sha256: 894cde85c251a3da6d341a711d7259ca11097bfd1b16e10024988790aa5c81b1
   patches:
     - disable_exchange_modules.patch
     - 0003-remove-PATH-pth-hack.patch
@@ -14,10 +14,10 @@ source:
 build:
   number: 0
   script:
-    - "{{ PYTHON }} setup.py -q install --record=record.txt"
+    - {{ PYTHON }} setup.py -q install --record=record.txt
     - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %PREFIX%\Lib\site-packages\win32\
     - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%\
-  skip: True  # [not win or py27]
+  skip: true  # [not win or py27]
 
 requirements:
   build:
