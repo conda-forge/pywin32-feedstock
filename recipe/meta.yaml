@@ -30,7 +30,7 @@ requirements:
 
 about:
   home: https://github.com/mhammond/pywin32
-  license: PSF
+  license: PSF-2.0
   license_file: Pythonwin/License.txt
   summary: Python extensions for Windows
   description: |
