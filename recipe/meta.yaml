@@ -10,6 +10,8 @@ source:
   patches:
     - disable_exchange_modules.patch
     - 0003-remove-PATH-pth-hack.patch
+    # https://github.com/mhammond/pywin32/commit/9fbc2ed3c0d69aca2475975a599cc316016599d3
+    - fix-formatting.diff
 
 build:
   number: 0
