@@ -12,7 +12,7 @@ source:
     - 0003-remove-PATH-pth-hack.patch
     # https://github.com/mhammond/pywin32/commit/9fbc2ed3c0d69aca2475975a599cc316016599d3
     - fix-formatting.diff
-    # HACK: Rename PythonServiceMessages.mc to APythonServiceMessages.mc to avoid https://github.com/python/cpython/commit/0d30ae1a03102de07758650af9243fd31211325a
+    # HACK: Avoid https://bugs.python.org/issue42009
     - ensure-PythonService-mc-before-cpp.diff
 
 build:
