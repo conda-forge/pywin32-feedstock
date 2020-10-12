@@ -16,9 +16,14 @@ source:
 build:
   number: 0
   script:
+    # HACK: Revert https://github.com/python/cpython/commit/0d30ae1a03102de07758650af9243fd31211325a
+    - move %PREFIX%\Lib\distutils\command\build_ext.py build_ext.py.bak  # [py == 39]
+    - copy %RECIPE_DIR%\build_ext.fixed.py %PREFIX%\Lib\distutils\command\build_ext.py  # [py == 39]
     - {{ PYTHON }} setup.py -q install --record=record.txt --skip-verstamp
     - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %PREFIX%\Lib\site-packages\win32\
     - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%\
+    # Undo the HACK
+    - move build_ext.py.bak %PREFIX%\Lib\distutils\command\build_ext.py  # [py == 39]
   skip: true  # [not win or py27]
 
 requirements:
