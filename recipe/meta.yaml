@@ -16,7 +16,7 @@ source:
     - ensure-PythonService-mc-before-cpp.diff
 
 build:
-  number: 0
+  number: 1
   script:
     - {{ PYTHON }} setup.py -q install --record=record.txt --skip-verstamp
     - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %PREFIX%\Lib\site-packages\win32\
