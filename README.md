@@ -3,7 +3,7 @@ About pywin32
 
 Home: https://github.com/mhammond/pywin32
 
-Package license: PSF
+Package license: PSF-2.0
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pywin32-feedstock/blob/master/LICENSE.txt)
 
