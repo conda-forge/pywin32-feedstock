@@ -37,6 +37,7 @@ import win32security
 import win32service
 import win32transaction
 import win32ts
+import win32ui
 import win32wnet
 
 import os
