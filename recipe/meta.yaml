@@ -1,4 +1,4 @@
-{% set version = "228" %}
+{% set version = "300" %}
 
 package:
   name: pywin32
@@ -6,17 +6,13 @@ package:
 
 source:
   url: https://github.com/mhammond/pywin32/archive/b{{ version }}.tar.gz
-  sha256: 894cde85c251a3da6d341a711d7259ca11097bfd1b16e10024988790aa5c81b1
+  sha256: 7ce66b7c624c6ca083ed54d81d826ea95268f3e47ece4c811ac086dd9f15b542
   patches:
     - disable_exchange_modules.patch
     - 0003-remove-PATH-pth-hack.patch
-    # https://github.com/mhammond/pywin32/commit/9fbc2ed3c0d69aca2475975a599cc316016599d3
-    - fix-formatting.diff
-    # HACK: Avoid https://bugs.python.org/issue42009
-    - ensure-PythonService-mc-before-cpp.diff
 
 build:
-  number: 1
+  number: 0
   script:
     - {{ PYTHON }} setup.py -q install --record=record.txt --skip-verstamp
     - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %PREFIX%\Lib\site-packages\win32\
