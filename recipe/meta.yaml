@@ -1,4 +1,5 @@
 {% set version = "300" %}
+{% set build_number = "1" %}
 
 package:
   name: pywin32
@@ -11,8 +12,23 @@ source:
     - disable_exchange_modules.patch
     - 0003-remove-PATH-pth-hack.patch
 
+{% if build_script == "noop" %}
 build:
-  number: 0
+  number: {{ build_number | int * 2 }}
+  noarch: python
+  script: echo "noop"
+
+requirements:
+  run_constrained:
+    # an-impossible-to-satisfy package for a windows install with python
+    - vc <=0
+  run:
+    - python >=3
+  host:
+    - python >=3
+{% elif build_script == "pip" %}
+build:
+  number: {{ build_number | int * 2 + 1 }}
   script:
     - {{ PYTHON }} setup.py -q install --record=record.txt --skip-verstamp
     - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %PREFIX%\Lib\site-packages\win32\
@@ -27,6 +43,7 @@ requirements:
     - pip
   run:
     - python
+{% endif %}
 
 about:
   home: https://github.com/mhammond/pywin32
