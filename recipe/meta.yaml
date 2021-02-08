@@ -26,7 +26,7 @@ requirements:
     - python >=3
   host:
     - python >=3
-{% elif build_script == "pip" %}
+{% else %}
 build:
   number: {{ build_number | int * 2 + 1 }}
   script:
