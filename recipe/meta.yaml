@@ -15,17 +15,12 @@ source:
 {% if build_script == "noop" %}
 build:
   number: {{ build_number | int * 2 }}
-  noarch: python
+  noarch: generic
   script: echo "noop"
 
 requirements:
-  run_constrained:
-    # an-impossible-to-satisfy package for a windows install with python
-    - vc <=0
   run:
-    - python >=3
-  host:
-    - python >=3
+    - __unix
 {% else %}
 build:
   number: {{ build_number | int * 2 + 1 }}
