@@ -10,6 +10,7 @@ source:
   patches:
     - disable_exchange_modules.patch
     - 0003-remove-PATH-pth-hack.patch
+    - remove_bdist_msi_to_support_pypy.patch
 
 build:
   number: 0
