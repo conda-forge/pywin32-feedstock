@@ -1,0 +1,21 @@
+--- setup.py        2021-08-22 12:39:24.017489412 -0700
++++ setup.py    2021-08-22 12:39:42.477672163 -0700
+@@ -79,8 +79,6 @@
+ from distutils.command.install_data import install_data
+ from distutils.command.build_scripts import build_scripts
+ 
+-from distutils.command.bdist_msi import bdist_msi
+-
+ from distutils.msvccompiler import get_build_version
+ from distutils import log
+ 
+@@ -2299,9 +2297,6 @@
+                      "title": "pywin32-%s" % (build_id,),
+                      "user_access_control": "auto",
+                     },
+-                 "bdist_msi":
+-                    {"install_script": "pywin32_postinstall.py",
+-                    },
+                 },
+ 
+       scripts = ["pywin32_postinstall.py", "pywin32_testall.py"],
