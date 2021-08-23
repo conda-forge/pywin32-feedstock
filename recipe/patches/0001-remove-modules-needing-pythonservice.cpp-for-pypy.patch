@@ -1,5 +1,5 @@
 diff --git a/setup.py b/setup.py
-index 297d15cb..40794da1 100644
+index 297d15cb..9bf9976a 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -102,6 +102,8 @@ try:
@@ -16,9 +16,35 @@ index 297d15cb..40794da1 100644
              return "Only available on platforms %s" % (ext.platforms,)
  
 +        if IS_PYPY and ext.name in ('servicemanager', 'pythonservice',
-+                                    'pythoncom', 'PyISAPI_loader'):
++                                    'PyISAPI_loader'):
 +            return "Cannot build service extensions on PyPy"
 +
          # We update the .libraries list with the resolved library name.
          # This is really only so "_d" works.
          ext.libraries = patched_libs
+@@ -838,9 +844,11 @@ class my_build_ext(build_ext):
+         # need at this stage.
+         self._build_scintilla()
+         # Copy cpp lib files needed to create Python COM extensions
+-        clib_files = (['win32', 'pywintypes%s.lib'],
+-                      ['win32com', 'pythoncom%s.lib'],
+-                      ['win32com', 'axscript%s.lib'])
++        clib_files = (['win32', 'pywintypes%s.lib'])
++        if not IS_PYPY:
++            clib_files += (['win32com', 'pythoncom%s.lib'],
++                           ['win32com', 'axscript%s.lib'],
++                          )
+         for clib_file in clib_files:
+             target_dir = os.path.join(self.build_lib, clib_file[0], "libs")
+             if not os.path.exists(target_dir):
+@@ -2243,6 +2251,10 @@ packages=['win32com',
+           'adodbapi',
+           ]
+ 
++if IS_PYPY:
++    # all these need Py_Initialize
++    com_extensions = []
++
+ py_modules = expand_modules("win32\\lib")
+ ext_modules = win32_extensions + com_extensions + pythonwin_extensions + \
+                     other_extensions
