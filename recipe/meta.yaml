@@ -8,12 +8,13 @@ source:
   url: https://github.com/mhammond/pywin32/archive/b{{ version }}.tar.gz
   sha256: 5366613c366c66b521a2e79780dcdf347310bd2b75022e424df320760931999c
   patches:
-    - disable_exchange_modules.patch
-    - 0003-remove-PATH-pth-hack.patch
-    - remove_bdist_msi_to_support_pypy.patch
+    - patches/disable_exchange_modules.patch
+    - patches/0003-remove-PATH-pth-hack.patch
+    - patches/remove_bdist_msi_to_support_pypy.patch
+    - patches/0001-remove-modules-needing-pythonservice.cpp-for-pypy.patch
     # Remove these after PyPy 3.7.6 release
-    - 0004-pre-pypy-3.7.6-PyExc_WindowsError.patch
-    - 0005-pre-pypy-3.7.6-import_h_workaround.patch
+    - patches/0004-pre-pypy-3.7.6-PyExc_WindowsError.patch
+    - patches/0005-pre-pypy-3.7.6-import_h_workaround.patch
 
 build:
   number: 0
