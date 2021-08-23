@@ -1,0 +1,30 @@
+diff --git a/win32/src/PyDEVMODE.cpp b/win32/src/PyDEVMODE.cpp
+index b9f9479e..e5170fcb 100644
+--- a/win32/src/PyDEVMODE.cpp
++++ b/win32/src/PyDEVMODE.cpp
+@@ -8,6 +8,10 @@
+ #define DM_SPECVERSION 0
+ #endif
+ 
++#ifdef PYPY_VERSION && !defined(PyExc_WindowsError)
++#define PyExc_WindowsError PyExc_OSError
++#endif
++
+ // @object PyDEVMODE|Python object wrapping a DEVMODE structure
+ struct PyMethodDef PyDEVMODEA::methods[] = {
+     {"Clear", PyDEVMODEA::Clear, 1},  // @pymeth Clear|Resets all members of the structure
+diff --git a/win32/src/win32api_display.cpp b/win32/src/win32api_display.cpp
+index d908c3ec..71048143 100644
+--- a/win32/src/win32api_display.cpp
++++ b/win32/src/win32api_display.cpp
+@@ -8,6 +8,10 @@
+ #define DM_SPECVERSION 0
+ #endif
+ 
++#ifdef PYPY_VERSION && !defined(PyExc_WindowsError)
++#define PyExc_WindowsError PyExc_OSError
++#endif
++
+ // from user32.dll, loaded in win32api's init function
+ ChangeDisplaySettingsExfunc pfnChangeDisplaySettingsEx = NULL;
+ EnumDisplayDevicesfunc pfnEnumDisplayDevices = NULL;

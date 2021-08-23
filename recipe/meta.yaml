@@ -11,6 +11,9 @@ source:
     - disable_exchange_modules.patch
     - 0003-remove-PATH-pth-hack.patch
     - remove_bdist_msi_to_support_pypy.patch
+    # Remove these after PyPy 3.7.6 release
+    - 0004-pre-pypy-3.7.6-PyExc_WindowsError.patch
+    - 0005-pre-pypy-3.7.6-import_h_workaround.patch
 
 build:
   number: 0
