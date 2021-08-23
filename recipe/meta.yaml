@@ -12,13 +12,14 @@ source:
     - patches/0003-remove-PATH-pth-hack.patch
     - patches/remove_bdist_msi_to_support_pypy.patch
     - patches/0001-remove-modules-needing-pythonservice.cpp-for-pypy.patch
-    # Remove these after PyPy 3.7.6 release
+    # Remove these after PyPy 7.3.6 release
     - patches/0004-pre-pypy-3.7.6-PyExc_WindowsError.patch
-    - patches/0005-pre-pypy-3.7.6-import_h_workaround.patch
 
 build:
   number: 0
   script:
+    # TODO: remove the following line after PyPy 7.3.6
+    - copy %RECIPE_DIR%\import.h %PREFIX%\include\   # [python_impl == "pypy"]
     - {{ PYTHON }} setup.py -q install --record=record.txt --skip-verstamp
     - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %PREFIX%\Lib\site-packages\win32\
     - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%\
