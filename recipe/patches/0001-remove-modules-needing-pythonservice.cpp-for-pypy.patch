@@ -1,5 +1,5 @@
 diff --git a/setup.py b/setup.py
-index 297d15cb..9bf9976a 100644
+index 297d15cb..1acc69a9 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -102,6 +102,8 @@ try:
@@ -22,14 +22,34 @@ index 297d15cb..9bf9976a 100644
          # We update the .libraries list with the resolved library name.
          # This is really only so "_d" works.
          ext.libraries = patched_libs
-@@ -838,9 +844,11 @@ class my_build_ext(build_ext):
+@@ -748,11 +754,14 @@ class my_build_ext(build_ext):
+         else:
+             plat_dir = "x86"
+         # Find the redist directory.
+-        vckey = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,
+-                               product_key,
+-                               0,
+-                               access,
+-                               )
++        try:
++            vckey = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,
++                                   product_key,
++                                   0,
++                                   access,
++                                   )
++        except Exception:
++            return mfc_contents
+         val = winreg.QueryValueEx(vckey, "ProductDir")[0]
+         mfc_dir = os.path.join(val, "redist", plat_dir, mfc_dir)
+         if os.path.isdir(mfc_dir):
+@@ -838,9 +847,11 @@ class my_build_ext(build_ext):
          # need at this stage.
          self._build_scintilla()
          # Copy cpp lib files needed to create Python COM extensions
 -        clib_files = (['win32', 'pywintypes%s.lib'],
 -                      ['win32com', 'pythoncom%s.lib'],
 -                      ['win32com', 'axscript%s.lib'])
-+        clib_files = (['win32', 'pywintypes%s.lib'])
++        clib_files = (['win32', 'pywintypes%s.lib'],)
 +        if not IS_PYPY:
 +            clib_files += (['win32com', 'pythoncom%s.lib'],
 +                           ['win32com', 'axscript%s.lib'],
@@ -37,7 +57,18 @@ index 297d15cb..9bf9976a 100644
          for clib_file in clib_files:
              target_dir = os.path.join(self.build_lib, clib_file[0], "libs")
              if not os.path.exists(target_dir):
-@@ -2243,6 +2251,10 @@ packages=['win32com',
+@@ -865,8 +876,8 @@ class my_build_ext(build_ext):
+             print("Can't find MFC contents in VisualStudio. Looking into WinSxS now..")
+             mfc_contents = self.lookupMfcInWinSxS(mfc_version, mfc_libraries)
+ 
+-        if not mfc_contents:
+-            raise RuntimeError("No MFC files found!")
++        # if not mfc_contents:
++        #    raise RuntimeError("No MFC files found!")
+ 
+         for mfc_content in mfc_contents:
+             shutil.copyfile(mfc_content,
+@@ -2243,6 +2254,10 @@ packages=['win32com',
            'adodbapi',
            ]
  
