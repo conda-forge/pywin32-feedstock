@@ -1,0 +1,1 @@
+/* Dummy file for PyPY to make stdafx.h happy */

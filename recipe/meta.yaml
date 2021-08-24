@@ -20,6 +20,7 @@ build:
   script:
     # TODO: remove the following line after PyPy 7.3.6
     - copy %RECIPE_DIR%\import.h %PREFIX%\include\   # [python_impl == "pypy"]
+    - copy %RECIPE_DIR%\graminit.h %PREFIX%\include\   # [python_impl == "pypy"]
     - {{ PYTHON }} setup.py -q install --record=record.txt --skip-verstamp
     - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %PREFIX%\Lib\site-packages\win32\
     - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%\
