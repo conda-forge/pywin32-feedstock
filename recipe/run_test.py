@@ -17,7 +17,6 @@ import perfmon
 import pywintypes
 import timer
 import win32ras
-import win2kras
 import win32api
 import win32clipboard
 import win32console
@@ -46,6 +45,7 @@ if IS_PYPY:
     try:
         import servicemanager
         import win32ui
+        import win2kras
     except ImportError:
         pass
     else:
