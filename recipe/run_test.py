@@ -6,12 +6,17 @@ Skipped modules:
 _winxptheme: private module
 wincerapi: interface to the win32 CE Remote API
 """
+import os
+import sys
+
+IS_PYPY = sys.implementation.name == 'pypy'
+
 import mmapfile
 import odbc
 import perfmon
 import pywintypes
-import servicemanager
 import timer
+import win32ras
 import win2kras
 import win32api
 import win32clipboard
@@ -32,20 +37,28 @@ import win32pipe
 import win32print
 import win32process
 import win32profile
-import win32ras
 import win32security
 import win32service
 import win32transaction
 import win32ts
-import win32ui
 import win32wnet
-
-import os
+if IS_PYPY:
+    try:
+        import servicemanager
+        import win32ui
+    except ImportError:
+        pass
+    else:
+        raise ImportError('sucesssfully imported module that should not be importable')
+else:
+    import servicemanager
+    import win32ui
 
 conda_py = str(os.sys.version_info.major) + str(os.sys.version_info.minor)
 
 pythoncom_filename = os.environ["LIBRARY_BIN"] + "\pythoncom" + conda_py + ".dll"
 pywintypes_filename = os.environ["LIBRARY_BIN"] + "\pywintypes" + conda_py + ".dll"
 
-assert os.path.isfile(pythoncom_filename)
+if not IS_PYPY:
+    assert os.path.isfile(pythoncom_filename)
 assert os.path.isfile(pywintypes_filename)
