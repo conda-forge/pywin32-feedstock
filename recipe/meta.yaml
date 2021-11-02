@@ -14,13 +14,14 @@ source:
 build:
   number: 2
   script:
-    - @echo on
-    - {{ PYTHON }} setup.py -q install --record=record.txt --skip-verstamp
-    - if %ERRORLEVEL% neq 0 exit 1
-    - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %PREFIX%\Lib\site-packages\win32\
-    - if %ERRORLEVEL% neq 0 exit 1
-    - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%\
-    - if %ERRORLEVEL% neq 0 exit 1
+    - |
+      @echo on
+      {{ PYTHON }} setup.py -q install --record=record.txt --skip-verstamp
+      if %ERRORLEVEL% neq 0 exit 1
+      copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %PREFIX%\Lib\site-packages\win32\
+      if %ERRORLEVEL% neq 0 exit 1
+      copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%\
+      if %ERRORLEVEL% neq 0 exit 1
   skip: true  # [not win]
 
 requirements:
