@@ -10,12 +10,12 @@ index 8c397e1e..88d55efe 100644
 -        # Exclude exchange 32-bit utility libraries from 64-bit
 -        # builds. Note that the exchange module now builds, but only
 -        # includes interfaces for 64-bit builds.
--        if self.plat_name == 'win-amd64' and ext.name == 'exchdapi':
+-        if self.plat_name == "win-amd64" and ext.name == "exchdapi":
 -            return "No 64-bit library for utility functions available."
-+        if ext.name in {'exchdapi', 'exchange'}:
++        if ext.name in {"exchdapi", "exchange"}:
 +            # Dont need these modules, and they require headers not present in
 +            # the windows SDK
 +            return ext.name + " module is disabled"
          if get_build_version() >=14:
-             if ext.name == 'exchange':
-                 ext.libraries.append('legacy_stdio_definitions')
+             if ext.name == "exchange":
+                 ext.libraries.append("legacy_stdio_definitions")
