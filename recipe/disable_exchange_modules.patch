@@ -1,8 +1,8 @@
 diff --git a/setup.py b/setup.py
-index 8c397e1e..88d55efe 100644
+index 736d40f1..6814f7e3 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -594,12 +594,10 @@ class my_build_ext(build_ext):
+@@ -624,12 +624,10 @@ class my_build_ext(build_ext):
          log.debug("After SDK processing, libs are %s", self.compiler.library_dirs)
  
      def _why_cant_build_extension(self, ext):
@@ -16,6 +16,6 @@ index 8c397e1e..88d55efe 100644
 +            # Dont need these modules, and they require headers not present in
 +            # the windows SDK
 +            return ext.name + " module is disabled"
-         if get_build_version() >=14:
+         if get_build_version() >= 14:
              if ext.name == "exchange":
                  ext.libraries.append("legacy_stdio_definitions")
