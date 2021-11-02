@@ -18,9 +18,13 @@ build:
       @echo on
       {{ PYTHON }} setup.py -q install --record=record.txt --skip-verstamp
       if %ERRORLEVEL% neq 0 exit 1
+      dir %PREFIX%\Lib\site-packages\win32\python*.dll
       copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %PREFIX%\Lib\site-packages\win32\
+      dir %PREFIX%\Lib\site-packages\win32\python*.dll
       if %ERRORLEVEL% neq 0 exit 1
+      dir %LIBRARY_BIN%\python*.dll
       copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%\
+      dir %LIBRARY_BIN%\python*.dll
       if %ERRORLEVEL% neq 0 exit 1
   skip: true  # [not win]
 
