@@ -47,5 +47,5 @@ conda_py = str(os.sys.version_info.major) + str(os.sys.version_info.minor)
 pythoncom_filename = os.environ["LIBRARY_BIN"] + "\pythoncom" + conda_py + ".dll"
 pywintypes_filename = os.environ["LIBRARY_BIN"] + "\pywintypes" + conda_py + ".dll"
 
-assert os.path.isfile(pythoncom_filename)
-assert os.path.isfile(pywintypes_filename)
+assert os.path.isfile(pythoncom_filename), pythoncom_filename
+assert os.path.isfile(pywintypes_filename), pywintypes_filename
