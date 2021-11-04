@@ -45,7 +45,7 @@ import glob
 
 conda_py = str(os.sys.version_info.major) + str(os.sys.version_info.minor)
 
-print(os.lisdir(os.environ["LIBRARY_BIN"]))
+print(os.listdir(os.environ["LIBRARY_BIN"]))
 
 pythoncom_filename = os.environ["LIBRARY_BIN"] + "\pythoncom" + conda_py + ".dll"
 pywintypes_filename = os.environ["LIBRARY_BIN"] + "\pywintypes" + conda_py + ".dll"
