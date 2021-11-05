@@ -14,32 +14,32 @@ source:
 build:
   number: 2
   script:
-    - |
-      @echo on
-      {{ PYTHON }} setup.py -q install --record=record.txt --skip-verstamp
-      echo "sleeping for 15"
-      :: The setup process spawns a child process to finish up some things, wait a bit for it to complete
-      timeout 15
-      echo "Copying over stray DLLS"
-      if %ERRORLEVEL% neq 0 exit 1
-      dir %PREFIX%\Lib\site-packages\win32\py*.dll
-      copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %PREFIX%\Lib\site-packages\win32\
-      dir %PREFIX%\Lib\site-packages\win32\py*.dll
-      if %ERRORLEVEL% neq 0 exit 1
-      dir %LIBRARY_BIN%\py*.dll
-      copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%\
-      if %ERRORLEVEL% neq 0 exit 1
-      dir %LIBRARY_BIN%\py*.dll
-      if %ERRORLEVEL% neq 0 exit 1
-
-  skip: true  # [not win]
+    - |                                                                                           # [win and python_impl != 'pypy']
+      @echo on                                                                                    # [win and python_impl != 'pypy']
+      {{ PYTHON }} setup.py -q install --record=record.txt --skip-verstamp                        # [win and python_impl != 'pypy']
+      echo "sleeping for 15"                                                                      # [win and python_impl != 'pypy']
+      :: The setup process spawns a child process to finish up some things                        # [win and python_impl != 'pypy']                                                                                                                                                                     
+      timeout 15                                                                                  # [win and python_impl != 'pypy']                                  
+      echo "Copying over stray DLLS"                                                              # [win and python_impl != 'pypy']                                                                                                                               
+      if %ERRORLEVEL% neq 0 exit 1                                                                # [win and python_impl != 'pypy']                                                                                                                             
+      dir %PREFIX%\Lib\site-packages\win32\py*.dll                                                # [win and python_impl != 'pypy']                                                                                                                                             
+      copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %PREFIX%\Lib\site-packages\win32\    # [win and python_impl != 'pypy']                                                                                                                                                                                         
+      dir %PREFIX%\Lib\site-packages\win32\py*.dll                                                # [win and python_impl != 'pypy']                                                                                                                                             
+      if %ERRORLEVEL% neq 0 exit 1                                                                # [win and python_impl != 'pypy']                                                                                                                             
+      dir %LIBRARY_BIN%\py*.dll                                                                   # [win and python_impl != 'pypy']                                                
+      copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%\                       # [win and python_impl != 'pypy']                                                                                                                                                                     
+      if %ERRORLEVEL% neq 0 exit 1                                                                # [win and python_impl != 'pypy']                                                                                                                             
+      dir %LIBRARY_BIN%\py*.dll                                                                   # [win and python_impl != 'pypy']                                                
+      if %ERRORLEVEL% neq 0 exit 1                                                                # [win and python_impl != 'pypy']                                                                                                                             
+    - echo "noop"
+                                                                                                               
 
 requirements:
-  build:
-    - {{ compiler("c") }}
+  build:                          # [win and python_impl != 'pypy']
+    - {{ compiler("c") }}         # [win and python_impl != 'pypy']
   host:
     - python
-    - pip
+    - pip                         # [win and python_impl != 'pypy']
   run:
     - python
 
