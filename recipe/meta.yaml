@@ -37,9 +37,13 @@ requirements:
   build:                          # [win and python_impl != 'pypy']
     - {{ compiler("c") }}         # [win and python_impl != 'pypy']
   host:
-    - python
+    - python                      # [win]
     - pip                         # [win and python_impl != 'pypy']
   run:
+    - python                      # [win]
+
+test:
+  requires:
     - python
 
 about:
