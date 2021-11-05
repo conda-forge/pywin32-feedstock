@@ -18,7 +18,7 @@ build:
       @echo on                                                                                    # [win and python_impl != 'pypy']
       {{ PYTHON }} setup.py -q install --record=record.txt --skip-verstamp                        # [win and python_impl != 'pypy']
       echo "sleeping for 15"                                                                      # [win and python_impl != 'pypy']
-      {{ PYTHON }} -c 'import time; time.sleep(15)'                                               # [win and python_impl != 'pypy']
+      {{ PYTHON }} -c "import time; time.sleep(15)"                                               # [win and python_impl != 'pypy']
       echo "Copying over stray DLLS"                                                              # [win and python_impl != 'pypy']
       if %ERRORLEVEL% neq 0 exit 1                                                                # [win and python_impl != 'pypy']
       dir %PREFIX%\Lib\site-packages\win32\py*.dll                                                # [win and python_impl != 'pypy']
@@ -37,10 +37,10 @@ requirements:
   build:                          # [win and python_impl != 'pypy']
     - {{ compiler("c") }}         # [win and python_impl != 'pypy']
   host:
-    - python                      # [win]
+    - python
     - pip                         # [win and python_impl != 'pypy']
   run:
-    - python                      # [win]
+    - python
 
 test:
   requires:
