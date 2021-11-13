@@ -1,4 +1,4 @@
-{% set version = "301" %}
+{% set version = "302" %}
 
 package:
   name: pywin32
@@ -6,26 +6,44 @@ package:
 
 source:
   url: https://github.com/mhammond/pywin32/archive/b{{ version }}.tar.gz
-  sha256: 5366613c366c66b521a2e79780dcdf347310bd2b75022e424df320760931999c
+  sha256: 47fd53c0561ff3019043e86880597aacbd736910d8add485117d8ad055441927
   patches:
     - disable_exchange_modules.patch
     - 0003-remove-PATH-pth-hack.patch
 
 build:
-  number: 0
+  number: 2
   script:
-    - {{ PYTHON }} setup.py -q install --record=record.txt --skip-verstamp
-    - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %PREFIX%\Lib\site-packages\win32\
-    - copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%\
-  skip: true  # [not win or py27]
+    - |                                                                                           # [win and python_impl != 'pypy']
+      @echo on                                                                                    # [win and python_impl != 'pypy']
+      {{ PYTHON }} setup.py -q install --record=record.txt --skip-verstamp                        # [win and python_impl != 'pypy']
+      echo "sleeping for 15"                                                                      # [win and python_impl != 'pypy']
+      {{ PYTHON }} -c "import time; time.sleep(15)"                                               # [win and python_impl != 'pypy']
+      echo "Copying over stray DLLS"                                                              # [win and python_impl != 'pypy']
+      if %ERRORLEVEL% neq 0 exit 1                                                                # [win and python_impl != 'pypy']
+      dir %PREFIX%\Lib\site-packages\win32\py*.dll                                                # [win and python_impl != 'pypy']
+      copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %PREFIX%\Lib\site-packages\win32\    # [win and python_impl != 'pypy']
+      dir %PREFIX%\Lib\site-packages\win32\py*.dll                                                # [win and python_impl != 'pypy']
+      if %ERRORLEVEL% neq 0 exit 1                                                                # [win and python_impl != 'pypy']
+      dir %LIBRARY_BIN%\py*.dll                                                                   # [win and python_impl != 'pypy']
+      copy %PREFIX%\Lib\site-packages\pywin32_system32\*.dll %LIBRARY_BIN%\                       # [win and python_impl != 'pypy']
+      if %ERRORLEVEL% neq 0 exit 1                                                                # [win and python_impl != 'pypy']
+      dir %LIBRARY_BIN%\py*.dll                                                                   # [win and python_impl != 'pypy']
+      if %ERRORLEVEL% neq 0 exit 1                                                                # [win and python_impl != 'pypy']
+    - echo "noop"
+
 
 requirements:
-  build:
-    - {{ compiler("c") }}
+  build:                          # [win and python_impl != 'pypy']
+    - {{ compiler("c") }}         # [win and python_impl != 'pypy']
   host:
     - python
-    - pip
+    - pip                         # [win and python_impl != 'pypy']
   run:
+    - python
+
+test:
+  requires:
     - python
 
 about:
