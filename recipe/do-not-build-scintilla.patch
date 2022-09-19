@@ -1,0 +1,22 @@
+diff --git a/setup.py b/setup.py
+index e74e6d97..53b2b56a 100644
+--- a/setup.py
++++ b/setup.py
+@@ -748,7 +748,7 @@ class my_build_ext(build_ext):
+ 
+         # Not sure how to make this completely generic, and there is no
+         # need at this stage.
+-        self._build_scintilla()
++        # self._build_scintilla()
+         # Copy cpp lib files needed to create Python COM extensions
+         clib_files = (
+             ["win32", "pywintypes%s.lib"],
+@@ -2425,7 +2425,7 @@ packages = [
+     "pythonwin.pywin.framework.editor.color",
+     "pythonwin.pywin.idle",
+     "pythonwin.pywin.mfc",
+-    "pythonwin.pywin.scintilla",
++    # "pythonwin.pywin.scintilla",
+     "pythonwin.pywin.tools",
+     "isapi",
+     "adodbapi",

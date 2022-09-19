@@ -9,6 +9,7 @@ source:
   sha256: 23e43eaacca3161565b2adc71f75625d9011087379e60fcdfb5238e187169246
   patches:
     - 0003-remove-PATH-pth-hack.patch
+    - do-not-build-scintilla.patch
 
 build:
   number: 1
