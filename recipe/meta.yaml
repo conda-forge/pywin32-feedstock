@@ -15,6 +15,7 @@ build:
   script:
     - |                                                                                           # [win and python_impl != 'pypy']
       @echo on                                                                                    # [win and python_impl != 'pypy']
+      set "STDLIB_DIR=%PREFIX%\Lib;%PREFIX%;%LIBRARY_BIN%"                                        # [win and python_impl != 'pypy']
       {{ PYTHON }} setup.py -q install --record=record.txt --skip-verstamp                        # [win and python_impl != 'pypy']
       echo "sleeping for 15"                                                                      # [win and python_impl != 'pypy']
       {{ PYTHON }} -c "import time; time.sleep(15)"                                               # [win and python_impl != 'pypy']
