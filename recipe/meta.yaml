@@ -12,7 +12,7 @@ source:
     - 0003-remove-PATH-pth-hack.patch
 
 build:
-  number: 0
+  number: 1
   script:
     - |                                                                                           # [win and python_impl != 'pypy']
       @echo on                                                                                    # [win and python_impl != 'pypy']
