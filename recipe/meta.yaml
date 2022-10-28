@@ -1,4 +1,4 @@
-{% set version = "303" %}
+{% set version = "304" %}
 
 package:
   name: pywin32
@@ -6,16 +6,17 @@ package:
 
 source:
   url: https://github.com/mhammond/pywin32/archive/b{{ version }}.tar.gz
-  sha256: bc3980d80e351333cc5566c7847d8f179828f2678d8539eed0e52d39ea0c3970
+  sha256: 23e43eaacca3161565b2adc71f75625d9011087379e60fcdfb5238e187169246
   patches:
-    - disable_exchange_modules.patch
     - 0003-remove-PATH-pth-hack.patch
+    - do-not-build-scintilla.patch
 
 build:
   number: 1
   script:
     - |                                                                                           # [win and python_impl != 'pypy']
       @echo on                                                                                    # [win and python_impl != 'pypy']
+      set "STDLIB_DIR=%PREFIX%\Lib;%PREFIX%;%LIBRARY_BIN%"                                        # [win and python_impl != 'pypy']
       {{ PYTHON }} setup.py -q install --record=record.txt --skip-verstamp                        # [win and python_impl != 'pypy']
       echo "sleeping for 15"                                                                      # [win and python_impl != 'pypy']
       {{ PYTHON }} -c "import time; time.sleep(15)"                                               # [win and python_impl != 'pypy']
@@ -36,6 +37,7 @@ build:
 requirements:
   build:                          # [win and python_impl != 'pypy']
     - {{ compiler("c") }}         # [win and python_impl != 'pypy']
+    - {{ compiler("cxx") }}       # [win and python_impl != 'pypy']
   host:
     - python
     - pip                         # [win and python_impl != 'pypy']
