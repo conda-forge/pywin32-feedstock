@@ -12,7 +12,7 @@ source:
     - do-not-build-scintilla.patch
 
 build:
-  number: 2
+  number: 3
   script:
     - |                                                                                           # [win and python_impl != 'pypy']
       @echo on                                                                                    # [win and python_impl != 'pypy']
