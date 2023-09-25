@@ -366,4 +366,5 @@ Feedstock Maintainers
 * [@carlodri](https://github.com/carlodri/)
 * [@mingwandroid](https://github.com/mingwandroid/)
 * [@nicoddemus](https://github.com/nicoddemus/)
+* [@xhochy](https://github.com/xhochy/)
 
