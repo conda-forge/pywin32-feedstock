@@ -1,6 +1,6 @@
 @echo on
 
-if "%python_impl%" != "pypy" (
+if "%python_impl%" NEQ "pypy" (
       set "STDLIB_DIR=%PREFIX%\Lib;%PREFIX%;%LIBRARY_BIN%"
       %PYTHON% setup.py -q install --record=record.txt --skip-verstamp
       echo "sleeping for 15"
