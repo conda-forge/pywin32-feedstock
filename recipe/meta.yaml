@@ -12,10 +12,10 @@ source:
     - do-not-build-scintilla.patch
 
 build:
-  number: 1
+  number: 2
 
 requirements:
-  build:                          # [win and python_impl != 'pypy']
+  build:
     - {{ compiler("c") }}         # [win and python_impl != 'pypy']
     - {{ compiler("cxx") }}       # [win and python_impl != 'pypy']
   host:
