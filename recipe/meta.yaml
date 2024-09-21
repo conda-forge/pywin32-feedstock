@@ -22,6 +22,7 @@ requirements:
   host:
     - python
     - pip                         # [win and python_impl != 'pypy']
+    - setuptools                  # [win and python_impl != 'pypy']
   run:
     - python
 
