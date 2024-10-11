@@ -17,10 +17,12 @@ build:
 requirements:
   build:
     - {{ compiler("c") }}         # [win and python_impl != 'pypy']
+    - {{ stdlib("c") }}           # [win and python_impl != 'pypy']
     - {{ compiler("cxx") }}       # [win and python_impl != 'pypy']
   host:
     - python
     - pip                         # [win and python_impl != 'pypy']
+    - setuptools
   run:
     - python
 
