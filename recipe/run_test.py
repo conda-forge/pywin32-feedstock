@@ -64,9 +64,10 @@ else:
             )
         )
     )
-
-    pythoncom_filename = os.environ["LIBRARY_BIN"] + "\pythoncom" + conda_py + ".dll"
-    pywintypes_filename = os.environ["LIBRARY_BIN"] + "\pywintypes" + conda_py + ".dll"
+    
+    library_bin = os.environ["LIBRARY_BIN"]
+    pythoncom_filename = os.path.join(library_bin, f"pythoncom{conda_py}.dll")
+    pywintypes_filename = os.path.join(library_bin, f"pywintypes{conda_py}.dll")
 
     assert os.path.isfile(pythoncom_filename), pythoncom_filename
     assert os.path.isfile(pywintypes_filename), pywintypes_filename
