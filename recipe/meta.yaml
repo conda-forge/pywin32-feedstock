@@ -1,4 +1,4 @@
-{% set version = "307" %}
+{% set version = "309" %}
 
 package:
   name: pywin32
@@ -6,13 +6,13 @@ package:
 
 source:
   url: https://github.com/mhammond/pywin32/archive/b{{ version }}.tar.gz
-  sha256: 013ac06e7e59cb069df743c76a25545f359af1a6441a2d6e91e87429ee651851
+  sha256: 2da80ab2d260bc373dbe1333c74d337bf5823238b06850e7a8053ae591b0219c
   patches:
     - 0003-remove-PATH-pth-hack.patch
     - do-not-build-scintilla.patch
 
 build:
-  number: 3
+  number: 0
 
 requirements:
   build:
