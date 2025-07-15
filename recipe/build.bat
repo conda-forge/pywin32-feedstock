@@ -2,9 +2,11 @@
 
 if "%python_impl%" NEQ "pypy" (
       set "STDLIB_DIR=%PREFIX%\Lib;%PREFIX%;%LIBRARY_BIN%"
-      %PYTHON% setup.py -q install --record=record.txt --skip-verstamp
+      %PYTHON% -m pip install --no-deps --no-build-isolation . -vv
+      if %ERRORLEVEL% neq 0 exit 1
       echo "sleeping for 15"
       %PYTHON% -c "import time; time.sleep(15)"
+      if %ERRORLEVEL% neq 0 exit 1
       echo "Copying over stray DLLS"
       if %ERRORLEVEL% neq 0 exit 1
       
