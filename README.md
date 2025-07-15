@@ -13,7 +13,6 @@ Development: https://github.com/mhammond/pywin32
 
 A set of extension modules that provides access to many of the Windows API functions.
 
-
 Current build status
 ====================
 
