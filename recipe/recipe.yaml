@@ -37,6 +37,7 @@ tests:
   - requirements:
       run:
         - python
+    script: run_test.py
 
 about:
   license: PSF-2.0
