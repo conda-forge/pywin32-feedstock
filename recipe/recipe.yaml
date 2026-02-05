@@ -19,6 +19,10 @@ build:
 
 requirements:
   build:
+    - if: build_platform != host_platform
+      then:
+        - python
+        - cross-python_${{ host_platform }}
     - if: win and python_impl != 'pypy'
       then:
         - ${{ compiler("c") }}
