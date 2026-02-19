@@ -241,38 +241,10 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>win_arm64_python3.10.____cpython</td>
+              <td>win_arm64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=6007&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pywin32-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_python3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_arm64_python3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=6007&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pywin32-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_python3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_arm64_python3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=6007&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pywin32-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_python3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_arm64_python3.13.____cp313</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=6007&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pywin32-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_python3.13.____cp313" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_arm64_python3.14.____cp314</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=6007&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pywin32-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_python3.14.____cp314" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pywin32-feedstock?branchName=main&jobName=win&configuration=win%20win_arm64_" alt="variant">
                 </a>
               </td>
             </tr>

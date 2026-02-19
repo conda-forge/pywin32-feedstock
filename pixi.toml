@@ -5,7 +5,7 @@
 
 [workspace]
 name = "pywin32-feedstock"
-version = "3.54.2"  # conda-smithy version used to generate this file
+version = "3.55.1"  # conda-smithy version used to generate this file
 description = "Pixi configuration for conda-forge/pywin32-feedstock"
 authors = ["@conda-forge/pywin32"]
 channels = ["conda-forge"]
@@ -203,36 +203,12 @@ description = "Build pywin32-feedstock with variant win_64_python3.14.____cp314 
 [tasks."inspect-win_64_python3.14.____cp314"]
 cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_64_python3.14.____cp314.yaml"
 description = "List contents of pywin32-feedstock packages built for variant win_64_python3.14.____cp314"
-[tasks."build-win_arm64_python3.10.____cpython"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/win_arm64_python3.10.____cpython.yaml"
-description = "Build pywin32-feedstock with variant win_arm64_python3.10.____cpython directly (without setup scripts)"
-[tasks."inspect-win_arm64_python3.10.____cpython"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_arm64_python3.10.____cpython.yaml"
-description = "List contents of pywin32-feedstock packages built for variant win_arm64_python3.10.____cpython"
-[tasks."build-win_arm64_python3.11.____cpython"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/win_arm64_python3.11.____cpython.yaml"
-description = "Build pywin32-feedstock with variant win_arm64_python3.11.____cpython directly (without setup scripts)"
-[tasks."inspect-win_arm64_python3.11.____cpython"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_arm64_python3.11.____cpython.yaml"
-description = "List contents of pywin32-feedstock packages built for variant win_arm64_python3.11.____cpython"
-[tasks."build-win_arm64_python3.12.____cpython"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/win_arm64_python3.12.____cpython.yaml"
-description = "Build pywin32-feedstock with variant win_arm64_python3.12.____cpython directly (without setup scripts)"
-[tasks."inspect-win_arm64_python3.12.____cpython"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_arm64_python3.12.____cpython.yaml"
-description = "List contents of pywin32-feedstock packages built for variant win_arm64_python3.12.____cpython"
-[tasks."build-win_arm64_python3.13.____cp313"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/win_arm64_python3.13.____cp313.yaml"
-description = "Build pywin32-feedstock with variant win_arm64_python3.13.____cp313 directly (without setup scripts)"
-[tasks."inspect-win_arm64_python3.13.____cp313"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_arm64_python3.13.____cp313.yaml"
-description = "List contents of pywin32-feedstock packages built for variant win_arm64_python3.13.____cp313"
-[tasks."build-win_arm64_python3.14.____cp314"]
-cmd = "rattler-build build --recipe recipe -m .ci_support/win_arm64_python3.14.____cp314.yaml"
-description = "Build pywin32-feedstock with variant win_arm64_python3.14.____cp314 directly (without setup scripts)"
-[tasks."inspect-win_arm64_python3.14.____cp314"]
-cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_arm64_python3.14.____cp314.yaml"
-description = "List contents of pywin32-feedstock packages built for variant win_arm64_python3.14.____cp314"
+[tasks."build-win_arm64_"]
+cmd = "rattler-build build --recipe recipe -m .ci_support/win_arm64_.yaml"
+description = "Build pywin32-feedstock with variant win_arm64_ directly (without setup scripts)"
+[tasks."inspect-win_arm64_"]
+cmd = "inspect_artifacts --recipe-dir recipe -m .ci_support/win_arm64_.yaml"
+description = "List contents of pywin32-feedstock packages built for variant win_arm64_"
 
 [feature.smithy.dependencies]
 conda-smithy = "*"
