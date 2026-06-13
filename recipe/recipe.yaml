@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: 311
+  version: "312"
 
 package:
   name: pywin32
@@ -9,13 +9,12 @@ package:
 
 source:
   url: https://github.com/mhammond/pywin32/archive/b${{ version }}.tar.gz
-  sha256: 4ae3f0d4adacc331733fe1204f7f93b8654615ca325adfc9eb6c67198246a91b
+  sha256: 71d959a9f18cf86001e5dca1e30d5046c187eabbb08112cb6ff01e04689f6f7b
   patches:
-    - 0003-remove-PATH-pth-hack.patch
-    - do-not-build-scintilla.patch
+    - 0001-conda-forge-fixes.patch
 
 build:
-  number: 2
+  number: 0
 
 requirements:
   build:
@@ -41,7 +40,7 @@ tests:
 
 about:
   license: PSF-2.0
-  license_file: Pythonwin/License.txt
+  license_file: pythonwin/License.txt
   summary: Python extensions for Windows
   description: |
     A set of extension modules that provides access to many of the Windows API functions.
