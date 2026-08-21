@@ -32,7 +32,7 @@ requirements:
     - if: win and python_impl != 'pypy'
       then:
         - pip
-        - setuptools
+        - setuptools <=82
   run:
     - python
 
