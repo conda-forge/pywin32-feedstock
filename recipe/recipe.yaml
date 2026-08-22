@@ -14,10 +14,14 @@ source:
     - 0001-conda-forge-fixes.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
+    - if: build_platform != host_platform
+      then:
+        - python
+        - cross-python_${{ host_platform }}
     - if: win and python_impl != 'pypy'
       then:
         - ${{ compiler("c") }}
@@ -28,7 +32,7 @@ requirements:
     - if: win and python_impl != 'pypy'
       then:
         - pip
-        - setuptools
+        - setuptools <=82
   run:
     - python
 
